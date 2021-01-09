@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>functionalscreen/StartScreen.qml</file>
+        <file>common/CustomDialog.qml</file>
+        <file>common/MyButton.qml</file>
+        <file>common/MyGroupBox.qml</file>
+        <file>common/ProgressButton.qml</file>
+        <file>common/ProgressCircle.qml</file>
+        <file>common/TabButton.qml</file>
+        <file>functionalscreen/SettingScreen.qml</file>
+        <file>functionalscreen/LoadingScreen.qml</file>
+        <file>common/ExtrasTextField.qml</file>
+        <file>common/ModifyKiDialog.qml</file>
+        <file>functionalscreen/ResultDialog.qml</file>
+        <file>functionalscreen/AdjustKiScreen.qml</file>
+        <file>functionalscreen/KiXInfo.qml</file>
+    </qresource>
+</RCC>
