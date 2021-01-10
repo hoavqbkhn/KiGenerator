@@ -36,12 +36,6 @@ const QString KI_NOT_AUTOSET = "NOT AUTOSET";
 const QString ID_COLUMN_NAME = "Mã nhân viên";
 const QString OFFICERNAME_COLUMN_NAME = "Họ tên";
 const QString STT_COLUMN_NAME = "STT";
-
-const QString KI_TYPE1_SYMBOL = "A";
-const QString KI_TYPE2_SYMBOL = "B";
-const QString KI_TYPE3_SYMBOL = "C";
-const QString KI_TYPE4_SYMBOL = "D";
-
 const QString KI_NOT_SET = "";
 const QString AMOUNT_ZERO = "0";
 const QString GDTT_ID = "060969";
@@ -64,10 +58,10 @@ const int QUARTER2 = 1;
 const int QUARTER3 = 2;
 const int QUARTER4 = 3;
 
-const int KI_TYPE1 = 1;
-const int KI_TYPE2 = 2;
-const int KI_TYPE3 = 3;
-const int KI_TYPE4 = 4;
+const int KI_TYPE1 = 0;
+const int KI_TYPE2 = 1;
+const int KI_TYPE3 = 2;
+const int KI_TYPE4 = 3;
 
 const int NUMBER_OF_MONTH = 12;
 const int NUMBER_OF_QUATER = 4;

@@ -35,6 +35,17 @@ class SetDefaultOfficerKiModel : public QAbstractListModel
     private:
         int mThisQuater {0};
         QVector<QSharedPointer<Officer>> mListOfficer;
+        void cloneDatax(QVector<QSharedPointer<Officer>> source, QVector<QSharedPointer<Officer>>& des)
+        {
+            for (int index = 0; index < source.size(); index++)
+            {
+                // Create a temp
+                auto temp = qSharedPointerCast<Officer> (source[index]);
+                // Clone data for store
+                auto cloneData = QSharedPointer<Officer> (new Officer(temp));
+                des.push_back(cloneData);
+            }
+        }
 
 };
 

@@ -26,14 +26,14 @@ SOURCES += \
     model/officer.cpp \
     store/kiappstore.cpp \
     middleware/kimiddleware.cpp \
-    model/officermodel.cpp \
     model/innermessage.cpp \
     model/resultmodelorderstyle.cpp \
     model/resultmodelkigroupstyle.cpp \
     model/createkimethod.cpp \
     model/adjustkimethod.cpp \
     model/kigeneratorhelper.cpp \
-    config/kiconfig.cpp
+    config/kiconfig.cpp \
+    model/setdefaultkimodel.cpp
 
 RESOURCES += qml.qrc
 #xlsx

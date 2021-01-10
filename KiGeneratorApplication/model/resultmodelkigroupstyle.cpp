@@ -57,10 +57,10 @@ QVariant ResultModelKiGroupStyle::data(const QModelIndex& index, int role) const
 
 void ResultModelKiGroupStyle::clearListOfficer()
 {
-    mNumberOfPeopleGetKiA = 0;
-    mNumberOfPeopleGetKiB = 0;
-    mNumberOfPeopleGetKiC = 0;
-    mNumberOfPeopleGetKiD = 0;
+    mNumberOfPeopleGetKiType1 = 0;
+    mNumberOfPeopleGetKiType2 = 0;
+    mNumberOfPeopleGetKiType3 = 0;
+    mNumberOfPeopleGetKiType4 = 0;
     mNumberOfOfficer = 0;
     mListOfficer.clear();
     emit layoutChanged();
@@ -69,20 +69,20 @@ void ResultModelKiGroupStyle::clearListOfficer()
 void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> data)
 {
     mThisQuater = data->getThisQuarter();
-    mNumberOfPeopleGetKiA = 0;
-    mNumberOfPeopleGetKiB = 0;
-    mNumberOfPeopleGetKiC = 0;
-    mNumberOfPeopleGetKiD = 0;
+    mNumberOfPeopleGetKiType1 = 0;
+    mNumberOfPeopleGetKiType2 = 0;
+    mNumberOfPeopleGetKiType3 = 0;
+    mNumberOfPeopleGetKiType4 = 0;
     mNumberOfOfficer = 0;
 
     for (int index = 0; index < data->getResult().size(); index++)
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE1_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KiConfig::getInstance()->getKiType1Symbol())
         {
             mListOfficer.push_back(officer);
-            mNumberOfPeopleGetKiA ++;
+            mNumberOfPeopleGetKiType1 ++;
         }
     }
 
@@ -90,10 +90,10 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE2_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KiConfig::getInstance()->getKiType2Symbol())
         {
             mListOfficer.push_back(officer);
-            mNumberOfPeopleGetKiB++;
+            mNumberOfPeopleGetKiType2++;
         }
     }
 
@@ -101,10 +101,10 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE3_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KiConfig::getInstance()->getKiType3Symbol())
         {
             mListOfficer.push_back(officer);
-            mNumberOfPeopleGetKiC++;
+            mNumberOfPeopleGetKiType3++;
         }
     }
 
@@ -112,14 +112,19 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE4_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KiConfig::getInstance()->getKiType4Symbol())
         {
             mListOfficer.push_back(officer);
-            mNumberOfPeopleGetKiD++;
+            mNumberOfPeopleGetKiType4++;
         }
     }
 
-    mNumberOfOfficer = mNumberOfPeopleGetKiA + mNumberOfPeopleGetKiB + mNumberOfPeopleGetKiC + mNumberOfPeopleGetKiD;
+    mNumberOfOfficer = mNumberOfPeopleGetKiType1 + mNumberOfPeopleGetKiType2 + mNumberOfPeopleGetKiType3 + mNumberOfPeopleGetKiType4;
+    mMap.clear();
+    mMap.insert(KiConfig::getInstance()->getKiType1Symbol(), mNumberOfPeopleGetKiType1);
+    mMap.insert(KiConfig::getInstance()->getKiType2Symbol(), mNumberOfPeopleGetKiType2);
+    mMap.insert(KiConfig::getInstance()->getKiType3Symbol(), mNumberOfPeopleGetKiType3);
+    mMap.insert(KiConfig::getInstance()->getKiType4Symbol(), mNumberOfPeopleGetKiType4);
     emit layoutChanged();
 }
 
@@ -148,21 +153,21 @@ int ResultModelKiGroupStyle::numberOfOfficer() const
 
 int ResultModelKiGroupStyle::numberOfPeopleGetKiD() const
 {
-    return mNumberOfPeopleGetKiD;
+    return mMap["D"];
 }
 
 int ResultModelKiGroupStyle::numberOfPeopleGetKiC() const
 {
-    return mNumberOfPeopleGetKiC;
+    return mMap["C"];
 }
 
 int ResultModelKiGroupStyle::numberOfPeopleGetKiB() const
 {
-    return mNumberOfPeopleGetKiB;
+    return mMap["B"];
 }
 
 int ResultModelKiGroupStyle::numberOfPeopleGetKiA() const
 {
-    return mNumberOfPeopleGetKiA;
+    return mMap["A"];
 }
 

@@ -40,11 +40,12 @@ class ResultModelKiGroupStyle: public QAbstractListModel
     private:
         int mThisQuater {0};
         QVector<QSharedPointer<Officer>> mListOfficer;
-        int mNumberOfPeopleGetKiA {0};
-        int mNumberOfPeopleGetKiB {0};
-        int mNumberOfPeopleGetKiC {0};
-        int mNumberOfPeopleGetKiD {0};
+        int mNumberOfPeopleGetKiType1 {0};
+        int mNumberOfPeopleGetKiType2 {0};
+        int mNumberOfPeopleGetKiType3 {0};
+        int mNumberOfPeopleGetKiType4 {0};
         int mNumberOfOfficer {0};
+        QMap<QString, int> mMap;
 };
 
 #endif // RESULTMODELKIGROUPSTYLE_H

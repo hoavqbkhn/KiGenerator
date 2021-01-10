@@ -1,5 +1,6 @@
 #include "setdefaultkimodel.h"
 #include "common.h"
+
 SetDefaultOfficerKiModel::SetDefaultOfficerKiModel()
 {
 }
@@ -67,7 +68,7 @@ void SetDefaultOfficerKiModel::clearListOfficer()
 
 void SetDefaultOfficerKiModel::setOfficerModel(QSharedPointer<DataProcessor> data)
 {
-    cloneData(data->getListOfficer(), mListOfficer);
+    cloneDatax(data->getListOfficer(), mListOfficer);
 
     for (int index = 0; index < mListOfficer.size(); index++)
     {

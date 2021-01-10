@@ -124,13 +124,20 @@ void MainBusinessProcessor::processActionGenerate(QSharedPointer<vtx::flux::Acti
               map.value("factorD").toFloat(),
               map.value("isPercentMode").toBool());
 
+    mMapKiTypeAndRatio.clear();
+    mMapKiTypeAndRatio.insert("A", map.value("factorA").toFloat());
+    mMapKiTypeAndRatio.insert("B", map.value("factorB").toFloat());
+    mMapKiTypeAndRatio.insert("D", map.value("factorD").toFloat());
+
     if (map.value("isPercentMode").toBool())
     {
-        mKiGeneratorHelper->setKiPercent(map.value("factorA").toFloat(), map.value("factorB").toFloat(), map.value("factorC").toFloat(), map.value("factorD").toFloat());
+        mKiGeneratorHelper->setKiPercent(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
+                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
     else
     {
-        mKiGeneratorHelper->setKiPeople(map.value("factorA").toInt(), map.value("factorB").toInt(), map.value("factorC").toInt(), map.value("factorD").toInt());
+        mKiGeneratorHelper->setKiPeople(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
+                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
 
     mKiGeneratorHelper->setIsPercentMode(map.value("isPercentMode").toBool());
@@ -185,14 +192,20 @@ void MainBusinessProcessor::processActionAdjustKi(QSharedPointer<vtx::flux::Acti
               map.value("factorA").toFloat(), map.value("factorB").toFloat(),
               map.value("factorD").toFloat(),
               map.value("isPercentMode").toBool());
+    mMapKiTypeAndRatio.clear();
+    mMapKiTypeAndRatio.insert("A", map.value("factorA").toFloat());
+    mMapKiTypeAndRatio.insert("B", map.value("factorB").toFloat());
+    mMapKiTypeAndRatio.insert("D", map.value("factorD").toFloat());
 
     if (map.value("isPercentMode").toBool())
     {
-        mKiGeneratorHelper->setKiPercent(map.value("factorA").toFloat(), map.value("factorB").toFloat(), map.value("factorC").toFloat(), map.value("factorD").toFloat());
+        mKiGeneratorHelper->setKiPercent(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
+                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
     else
     {
-        mKiGeneratorHelper->setKiPeople(map.value("factorA").toInt(), map.value("factorB").toInt(), map.value("factorC").toInt(), map.value("factorD").toInt());
+        mKiGeneratorHelper->setKiPeople(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
+                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
 
     mKiGeneratorHelper->setIsPercentMode(map.value("isPercentMode").toBool());
@@ -209,6 +222,10 @@ void MainBusinessProcessor::processActionAdjustKi(QSharedPointer<vtx::flux::Acti
         mMiddlewareInterface->dispatchActionNotifyIssue(issue);
     }
 }
+
+
+
+
 void MainBusinessProcessor::setMiddlewareInterface(KiAppMiddlewareInterface* middlewareInterface)
 {
     mMiddlewareInterface = middlewareInterface;

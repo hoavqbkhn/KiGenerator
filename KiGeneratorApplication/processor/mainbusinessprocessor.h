@@ -44,14 +44,13 @@ class MainBusinessProcessor: public ProcessorAbstract
         KiAppMiddlewareInterface* mMiddlewareInterface;
         QSharedPointer<DataProcessor> mDataProcessor {nullptr};
         QSharedPointer<KiGeneratorHelper> mKiGeneratorHelper {nullptr};
-
+        QMap<QString, float> mMapKiTypeAndRatio;
         //function
         void processActionWorkOnDataKiFile(QSharedPointer<vtx::flux::Action> action);
         void processActionGenerate(QSharedPointer<vtx::flux::Action> action);
         void processActionExport(QSharedPointer<vtx::flux::Action> action);
         void processActionUpdateFixingList(QSharedPointer<vtx::flux::Action> action);
         void processActionAdjustKi(QSharedPointer<vtx::flux::Action> action);
-
 };
 
 #endif // MAINBUSINESSPROCESSOR_H

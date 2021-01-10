@@ -144,7 +144,7 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                 case KI_TYPE1:
                     if (mKiType1People > 0)
                     {
-                        mExecListOfficer[index]->insertKiXQuarter(KI_TYPE1_SYMBOL, mThisQuarter);
+                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType1Symbol(), mThisQuarter);
                         LOG_DEBUG("STT %d Get KiType1 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
                         mKiType1People--;
                     }
@@ -433,16 +433,16 @@ void CreateKiMethod::getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiT
         {
             //list được chọn của Ki Type2 phải loại những người vừa được set Ki Type1 tháng này
             if ((!thereIsDifference || (mExecListOfficer[index]->getKiXMonthlyAmount(kiType).toInt() < maxKiXAmount))
-                && mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL)
+                && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol())
             {
                 listLess.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
             }
             else if ((mExecListOfficer[index]->getKiXMonthlyAmount(kiType).toInt() == maxKiXAmount)
-                     && mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL)
+                     && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol())
             {
                 listMore.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
             }
-            else if (mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL)
+            else if (mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol())
             {
                 LOG_DEBUG("WRONG NUMBER OF KI MONTH KiType2")
             }
@@ -454,18 +454,18 @@ void CreateKiMethod::getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiT
         {
             //list được chọn của Ki Type4 phải loại những người vừa được set Ki Type1 & Ki Type2 tháng này
             if ((!thereIsDifference || (mExecListOfficer[index]->getKiXMonthlyAmount(kiType).toInt() < maxKiXAmount))
-                && mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL
+                && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol()
                 && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType2Symbol())
             {
                 listLess.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
             }
             else if ((mExecListOfficer[index]->getKiXMonthlyAmount(kiType).toInt() == maxKiXAmount)
-                     && mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL
+                     && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol()
                      && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType2Symbol())
             {
                 listMore.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
             }
-            else if (mExecListOfficer[index]->getKiXMonth(month) != KI_TYPE1_SYMBOL
+            else if (mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType1Symbol()
                      && mExecListOfficer[index]->getKiXMonth(month) != KiConfig::getInstance()->getKiType2Symbol())
             {
                 LOG_DEBUG("WRONG NUMBER OF KI MONTH KiType4 ")
@@ -487,7 +487,7 @@ void CreateKiMethod::setKiType1AtMonthXOfQuarter(int month, QVector<int> listMor
         if (listLess.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
         {
             //Cho những người có Ki Type1 quý này lên đầu
-            if (mExecListOfficer[index]->getKiXQuarter(mThisQuarter) == KI_TYPE1_SYMBOL)
+            if (mExecListOfficer[index]->getKiXQuarter(mThisQuarter) == KiConfig::getInstance()->getKiType1Symbol())
             {
                 tempList.push_front(mExecListOfficer[index]);
             }
@@ -546,7 +546,7 @@ void CreateKiMethod::setKiType1AtMonthXOfQuarter(int month, QVector<int> listMor
             {
                 if (mExecListOfficer[index2]->getOfficerStt().toInt() == tempList[index1]->getOfficerStt().toInt())
                 {
-                    mExecListOfficer[index2]->insertKiXMonth(KI_TYPE1_SYMBOL, month);
+                    mExecListOfficer[index2]->insertKiXMonth(KiConfig::getInstance()->getKiType1Symbol(), month);
                     LOG_DEBUG("STT % d Get KiType1 in Month % d Quarter % d", mExecListOfficer[index2]->getOfficerStt().toInt(), month + 1, mThisQuarter + 1);
                     maxTargets--;
                 }
