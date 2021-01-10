@@ -670,7 +670,7 @@ void CreateKiMethod::setKiType3AtMonthXForLeftPeople(int month)
 
 void CreateKiMethod::embroilList(QVector<QSharedPointer<Officer> >& list)
 {
-    for (int index = 0; index < 30; index++)
+    for (int index = 0; index < 100; index++)
     {
         int ranVal1 = randomIntergerInRange(0, list.size());
         int ranVal2 = randomIntergerInRange(0, list.size());
