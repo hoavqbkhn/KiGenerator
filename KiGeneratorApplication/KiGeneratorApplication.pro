@@ -32,7 +32,8 @@ SOURCES += \
     model/resultmodelkigroupstyle.cpp \
     model/createkimethod.cpp \
     model/adjustkimethod.cpp \
-    model/kigeneratorhelper.cpp
+    model/kigeneratorhelper.cpp \
+    config/kiconfig.cpp
 
 RESOURCES += qml.qrc
 #xlsx
@@ -77,7 +78,8 @@ HEADERS += \
     model/resultmodelkigroupstyle.h \
     model/createkimethod.h \
     model/adjustkimethod.h \
-    model/kigeneratorhelper.h
+    model/kigeneratorhelper.h \
+    config/kiconfig.h
 
 DISTFILES += \
     logger/spdlog/contrib/README.md \

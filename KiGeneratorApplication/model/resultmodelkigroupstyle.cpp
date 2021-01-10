@@ -79,7 +79,7 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_A_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE1_SYMBOL)
         {
             mListOfficer.push_back(officer);
             mNumberOfPeopleGetKiA ++;
@@ -90,7 +90,7 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_B_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE2_SYMBOL)
         {
             mListOfficer.push_back(officer);
             mNumberOfPeopleGetKiB++;
@@ -101,7 +101,7 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_C_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE3_SYMBOL)
         {
             mListOfficer.push_back(officer);
             mNumberOfPeopleGetKiC++;
@@ -112,7 +112,7 @@ void ResultModelKiGroupStyle::setOfficerModel(QSharedPointer<KiGeneratorHelper> 
     {
         QSharedPointer<Officer> officer = data->getResult().at(index);
 
-        if (officer->getKiXQuarter(mThisQuater) == KI_D_SYMBOL)
+        if (officer->getKiXQuarter(mThisQuater) == KI_TYPE4_SYMBOL)
         {
             mListOfficer.push_back(officer);
             mNumberOfPeopleGetKiD++;

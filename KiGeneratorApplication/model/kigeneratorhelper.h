@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <iterator>
 #include <functional>
+#include "config/kiconfig.h"
 
 class KiGeneratorHelper : public InnerMessage
 {

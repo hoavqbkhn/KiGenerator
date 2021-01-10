@@ -41,19 +41,19 @@ QVariant SetDefaultOfficerKiModel::data(const QModelIndex& index, int role) cons
     }
     else if (role == KI_KiAStatusRole)
     {
-        return infoList->getKiXStatus(KI_A);
+        return infoList->getKiXStatus(KI_TYPE1);
     }
     else if (role == KI_KiBStatusRole)
     {
-        return infoList->getKiXStatus(KI_B);
+        return infoList->getKiXStatus(KI_TYPE2);
     }
     else if (role == KI_KiCStatusRole)
     {
-        return infoList->getKiXStatus(KI_C);
+        return infoList->getKiXStatus(KI_TYPE3);
     }
     else if (role == KI_KiDStatusRole)
     {
-        return infoList->getKiXStatus(KI_D);
+        return infoList->getKiXStatus(KI_TYPE4);
     }
 
     return QVariant();

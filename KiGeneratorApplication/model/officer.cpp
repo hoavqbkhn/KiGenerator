@@ -100,57 +100,57 @@ void Officer::insertKiXMonth(const QString& kiXMonth, int pos)
         mKiXMonth.remove(pos);
         mKiXMonth.insert(mKiXMonth.begin() + pos, kiXMonth);
 
-        if (kiXMonth == KI_A_SYMBOL)
+        if (kiXMonth == KI_TYPE1_SYMBOL)
         {
             // tăng số tháng của loại ki này
-            int amount = mKiXMonthlyAmount[KI_A].toInt();
+            int amount = mKiXMonthlyAmount[KI_TYPE1].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_A] = QString::number(amount);
+            mKiXMonthlyAmount[KI_TYPE1] = QString::number(amount);
         }
-        else if (kiXMonth == KI_B_SYMBOL)
+        else if (kiXMonth == KI_TYPE2_SYMBOL)
         {
-            int amount = mKiXMonthlyAmount[KI_B].toInt();
+            int amount = mKiXMonthlyAmount[KI_TYPE2].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_B] = QString::number(amount);
+            mKiXMonthlyAmount[KI_TYPE2] = QString::number(amount);
         }
-        else if (kiXMonth == KI_C_SYMBOL)
+        else if (kiXMonth == KI_TYPE3_SYMBOL)
         {
-            int amount = mKiXMonthlyAmount[KI_C].toInt();
+            int amount = mKiXMonthlyAmount[KI_TYPE3].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_C] = QString::number(amount);
+            mKiXMonthlyAmount[KI_TYPE3] = QString::number(amount);
         }
-        else if (kiXMonth == KI_D_SYMBOL)
+        else if (kiXMonth == KI_TYPE4_SYMBOL)
         {
-            int amount = mKiXMonthlyAmount[KI_D].toInt();
+            int amount = mKiXMonthlyAmount[KI_TYPE4].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_D] = QString::number(amount);
+            mKiXMonthlyAmount[KI_TYPE4] = QString::number(amount);
         }
         else if (kiXMonth == KI_NOT_SET)
         {
             // giảm số tháng của loại ki này
-            if (ki == KI_A_SYMBOL)
+            if (ki == KI_TYPE1_SYMBOL)
             {
-                int amount = mKiXMonthlyAmount[KI_A].toInt();
+                int amount = mKiXMonthlyAmount[KI_TYPE1].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_A] = QString::number(amount);
+                mKiXMonthlyAmount[KI_TYPE1] = QString::number(amount);
             }
-            else if (ki == KI_B_SYMBOL)
+            else if (ki == KI_TYPE2_SYMBOL)
             {
-                int amount = mKiXMonthlyAmount[KI_B].toInt();
+                int amount = mKiXMonthlyAmount[KI_TYPE2].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_B] = QString::number(amount);
+                mKiXMonthlyAmount[KI_TYPE2] = QString::number(amount);
             }
-            else if (ki == KI_C_SYMBOL)
+            else if (ki == KI_TYPE3_SYMBOL)
             {
-                int amount = mKiXMonthlyAmount[KI_C].toInt();
+                int amount = mKiXMonthlyAmount[KI_TYPE3].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_C] = QString::number(amount);
+                mKiXMonthlyAmount[KI_TYPE3] = QString::number(amount);
             }
-            else if (ki == KI_D_SYMBOL)
+            else if (ki == KI_TYPE4_SYMBOL)
             {
-                int amount = mKiXMonthlyAmount[KI_D].toInt();
+                int amount = mKiXMonthlyAmount[KI_TYPE4].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_D] = QString::number(amount);
+                mKiXMonthlyAmount[KI_TYPE4] = QString::number(amount);
             }
         }
     }
@@ -179,21 +179,21 @@ void Officer::insertKiXQuarter(const QString& kiXQuarter, int pos)
             insertKiXMonth(KI_NOT_SET, pos * 3 + 2);
         }
 
-        if (kiXQuarter == KI_A_SYMBOL)
+        if (kiXQuarter == KI_TYPE1_SYMBOL)
         {
-            insertKiXStatus(YES, KI_A);
+            insertKiXStatus(YES, KI_TYPE1);
         }
-        else if (kiXQuarter == KI_B_SYMBOL)
+        else if (kiXQuarter == KI_TYPE2_SYMBOL)
         {
-            insertKiXStatus(YES, KI_B);
+            insertKiXStatus(YES, KI_TYPE2);
         }
-        else if (kiXQuarter == KI_C_SYMBOL)
+        else if (kiXQuarter == KI_TYPE3_SYMBOL)
         {
-            insertKiXStatus(YES, KI_C);
+            insertKiXStatus(YES, KI_TYPE3);
         }
-        else if (kiXQuarter == KI_D_SYMBOL)
+        else if (kiXQuarter == KI_TYPE4_SYMBOL)
         {
-            insertKiXStatus(YES, KI_D);
+            insertKiXStatus(YES, KI_TYPE4);
         }
     }
     else

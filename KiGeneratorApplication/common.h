@@ -37,10 +37,10 @@ const QString ID_COLUMN_NAME = "Mã nhân viên";
 const QString OFFICERNAME_COLUMN_NAME = "Họ tên";
 const QString STT_COLUMN_NAME = "STT";
 
-const QString KI_A_SYMBOL = "A";
-const QString KI_B_SYMBOL = "B";
-const QString KI_C_SYMBOL = "C";
-const QString KI_D_SYMBOL = "D";
+const QString KI_TYPE1_SYMBOL = "A";
+const QString KI_TYPE2_SYMBOL = "B";
+const QString KI_TYPE3_SYMBOL = "C";
+const QString KI_TYPE4_SYMBOL = "D";
 
 const QString KI_NOT_SET = "";
 const QString AMOUNT_ZERO = "0";
@@ -64,10 +64,10 @@ const int QUARTER2 = 1;
 const int QUARTER3 = 2;
 const int QUARTER4 = 3;
 
-const int KI_A = 0;
-const int KI_B = 1;
-const int KI_C = 2;
-const int KI_D = 3;
+const int KI_TYPE1 = 1;
+const int KI_TYPE2 = 2;
+const int KI_TYPE3 = 3;
+const int KI_TYPE4 = 4;
 
 const int NUMBER_OF_MONTH = 12;
 const int NUMBER_OF_QUATER = 4;
