@@ -119,6 +119,8 @@ void AdjustKiMethod::setOfficialListOfficer(const QVector<QSharedPointer<Officer
 void AdjustKiMethod::updateFixingList(const QString& id, const QString& ki)
 {
     //do nothing
+    (void) id;
+    (void) ki;
 }
 
 

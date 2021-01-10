@@ -32,6 +32,8 @@ const QString SO_KI_B_THANG = "Sô KI B Tháng";
 const QString SO_KI_C_THANG = "Sô KI C Tháng";
 const QString SO_KI_D_THANG = "Sô KI D Tháng";
 const QString KI_NOT_AUTOSET = "NOT AUTOSET";
+const QString LAST_YEAR_SET_KI_A = "Năm A Quý";
+const QString LAST_YEAR_SET_KI_D = "Năm D Quý";
 
 const QString ID_COLUMN_NAME = "Mã nhân viên";
 const QString OFFICERNAME_COLUMN_NAME = "Họ tên";

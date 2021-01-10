@@ -35,7 +35,7 @@ class KiGeneratorHelper : public InnerMessage
         int convertQuarterToSecondMonth(int quarter);
         int convertQuarterToThirdMonth(int quarter);
         int randomIntergerInRange(int minVal, int maxVal);
-        QVector<int> getRandomSelectedList(int maxAmount, const QVector<int>& list);
+        QVector<int> getRandomSelectedList(int maxAmount,const QVector<int>& list);
         QVector<int> getRandomSelectedListVer2(int maxAmount, const QVector<int>& list, const QVector<int> priorityList);
 
 

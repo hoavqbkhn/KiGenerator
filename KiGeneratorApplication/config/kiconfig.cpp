@@ -4,6 +4,16 @@ KiConfig::KiConfig()
 {
 }
 
+int KiConfig::getThisYear() const
+{
+    return mThisYear;
+}
+
+void KiConfig::setThisYear(int thisYear)
+{
+    mThisYear = thisYear;
+}
+
 int KiConfig::getKiType4Index() const
 {
     return mKiType4Index;

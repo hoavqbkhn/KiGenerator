@@ -51,7 +51,13 @@ class Officer
         bool operator > (const Officer& officer) const;
         bool operator < (const Officer& officer) const;
 
-    private:
+        int getLastYearGotKiDQuarter() const;
+        void setLastYearGotKiDQuarter(int lastYearGotKiDQuarter);
+
+        int getLastYearGotKiAQuarter() const;
+        void setLastYearGotKiAQuarter(int lastYearGotKiAQuarter);
+
+private:
         QString mOfficerId {""};
         QString mOfficerName {""};
         QString mOfficerStt {""};
@@ -63,6 +69,8 @@ class Officer
         QVector<QString> mKiXMonthlyAmount;
         int mRowInDocument {0};
         int mKiNotAutoSet {0};
+        int mLastYearGotKiDQuarter{2017};
+        int mLastYearGotKiAQuarter{2017};
 };
 
 #endif // OFFICER_H

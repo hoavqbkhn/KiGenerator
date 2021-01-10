@@ -18,6 +18,9 @@ public:
     int getKiType3Index() const;
     int getKiType4Index() const;
 
+    int getThisYear() const;
+    void setThisYear(int thisYear);
+
 private:
     static KiConfig* instance;
     KiConfig();
@@ -26,10 +29,12 @@ private:
     QString mKiType3Symbol{"C"};
     QString mKiType4Symbol{"B"};
 
-    int mKiType1Index{3};
-    int mKiType2Index{0};
+    int mKiType1Index{3}; //lưu giá trị index của ki type1 trong file excel (Ở đây type1 đang là KiD có index  = 3 trong file excel)
+    int mKiType2Index{0}; //lưu giá trị index của ki type2 trong file excel (Ở đây type2 đang là KiA có index  = 0 trong file excel)
     int mKiType3Index{2};
     int mKiType4Index{1};
+
+    int mThisYear{2020};
 
 };
 
