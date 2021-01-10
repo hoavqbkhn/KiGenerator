@@ -311,3 +311,23 @@ bool Officer::operator <(const Officer& officer) const
         return false;
     }
 }
+
+int Officer::getLastYearGotKiDQuarter() const
+{
+    return mLastYearGotKiDQuarter;
+}
+
+void Officer::setLastYearGotKiDQuarter(int lastYearGotKiDQuarter)
+{
+    mLastYearGotKiDQuarter = lastYearGotKiDQuarter;
+}
+
+int Officer::getLastYearGotKiAQuarter() const
+{
+    return mLastYearGotKiAQuarter;
+}
+
+void Officer::setLastYearGotKiAQuarter(int lastYearGotKiAQuarter)
+{
+    mLastYearGotKiAQuarter = lastYearGotKiAQuarter;
+}

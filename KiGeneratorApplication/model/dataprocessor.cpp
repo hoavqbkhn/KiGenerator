@@ -99,6 +99,19 @@ bool DataProcessor::parseData()
             officer->setKiNotAutoSet(cell->value().toInt());
         }
 
+        //parse last year get kiA quarter
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiAQuaterSetLastYear))
+        {
+            officer->setLastYearGotKiAQuarter(cell->value().toInt());
+        }
+
+        //parse last year get kiD quarter
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiDQuaterSetLastYear))
+        {
+            officer->setLastYearGotKiDQuarter(cell->value().toInt());
+        }
+
+
         //Lưu lại để dùng khi export
         officer->setRowInDocument(row);
 
@@ -176,6 +189,8 @@ void DataProcessor::searchAllFieldColumnIndex()
     mKiXStatusColumnIndex[KI_C_INDEX] = findAFieldColumnIndex(KI_C_STATUS);
     mKiXStatusColumnIndex[KI_D_INDEX] = findAFieldColumnIndex(KI_D_STATUS);
     mKiNotAutoSetColumnIndex = findAFieldColumnIndex(KI_NOT_AUTOSET);
+    mKiAQuaterSetLastYear = findAFieldColumnIndex(LAST_YEAR_SET_KI_A);
+    mKiDQuaterSetLastYear = findAFieldColumnIndex(LAST_YEAR_SET_KI_D);
 }
 
 
