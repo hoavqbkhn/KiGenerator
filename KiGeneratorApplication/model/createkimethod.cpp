@@ -139,9 +139,8 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
         if (listOfficerStt.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
         {
             //*decrease
-            switch (kiType)
+            if (kiType == KiConfig::getInstance()->getKiType1Index())
             {
-                case KI_TYPE1:
                     if (mKiType1People > 0)
                     {
                         mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType1Symbol(), mThisQuarter);
@@ -149,41 +148,34 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                         mKiType1People--;
                     }
 
-                    break;
-
-                case KI_TYPE2:
-                    if (mKiType2People > 0)
+                }else if(kiType == KiConfig::getInstance()->getKiType2Index())
                     {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType2Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType2 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType2People--;
+                        if (mKiType2People > 0)
+                        {
+                            mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType2Symbol(), mThisQuarter);
+                            LOG_DEBUG("STT %d Get KiType2 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                            mKiType2People--;
+                        }
                     }
-
-                    break;
-
-                case KI_TYPE3:
-                    if (mKiType3People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType3Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType3 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType3People--;
-                    }
-
-                    break;
-
-                case KI_TYPE4:
-                    if (mKiType4People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType4Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType4 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType4People--;
-                    }
-
-                    break;
-
-                default:
-                    break;
+                else if(kiType == KiConfig::getInstance()->getKiType3Index())
+            {
+                if (mKiType3People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType3Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType3 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType3People--;
+                }
             }
+                else if(kiType == KiConfig::getInstance()->getKiType3Index())
+            {
+                if (mKiType4People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType4Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType4 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType4People--;
+                }
+            }
+
         }
     }
 }
@@ -197,56 +189,49 @@ QVector<int> CreateKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
     {
         if (!listOfficerStt.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
         {
-            switch (kiType)
+            if (kiType == KiConfig::getInstance()->getKiType1Index())
             {
-                case KI_TYPE1:
                     if (mKiType1People > 0)
                     {
-                        mExecListOfficer[index]->insertKiXStatus(NO, KI_TYPE1);
+                        mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType1Index());
                         randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                     }
+                }else if(kiType == KiConfig::getInstance()->getKiType2Index())
+            {
+                if (mKiType2People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType2Index());
 
-                    break;
-
-                case KI_TYPE2:
-                    if (mKiType2People > 0)
+                    if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
                     {
-                        mExecListOfficer[index]->insertKiXStatus(NO, KI_TYPE2);
-
-                        if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
-                        {
-                            randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
-                        }
-                    }
-
-                    break;
-
-                case KI_TYPE3:
-                    if (mKiType3People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXStatus(NO, KI_TYPE3);
                         randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                     }
-
-                    break;
-
-                case KI_TYPE4:
-                    if (mKiType4People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXStatus(NO, KI_TYPE4);
-
-                        if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()) &&
-                            !mOfficerGetKiType2InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
-                        {
-                            randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
-                        }
-                    }
-
-                    break;
-
-                default:
-                    break;
+                }
             }
+                else if(kiType == KiConfig::getInstance()->getKiType3Index())
+            {
+                if (mKiType3People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType3Index());
+                    randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
+                }
+            }
+                 else if(kiType == KiConfig::getInstance()->getKiType4Index()){
+                if (mKiType4People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType4Index());
+
+                    if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()) &&
+                        !mOfficerGetKiType2InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
+                    {
+                        randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
+                    }
+                }
+            }
+
+
+
+
         }
     }
 
@@ -264,13 +249,13 @@ void CreateKiMethod::generateQuarterKi()
     if (candidateForKiType1ListStt.size() < mKiType1People)
     {
         //thì toàn bộ số người trong sanh sách ở bước trên sẽ đạt Ki loai 1
-        setKiXQuaterStatusOfThemToYes(KI_TYPE1, candidateForKiType1ListStt);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType1Index(), candidateForKiType1ListStt);
         //và reset trạng thái Ki loai 1 của toàn bộ số người đã đạt Ki loai 1 khác về "Không"
         //roi đưa vào danh sách để random số Ki loai 1 còn thiếu.
-        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KI_TYPE1, candidateForKiType1ListStt);
+        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KiConfig::getInstance()->getKiType1Index(), candidateForKiType1ListStt);
         //random
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType1People, randomList);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE1, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType1Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set KiType1 trong turn này để xử lý KiType2
         mOfficerGetKiType1InThisSessionList.append(candidateForKiType1ListStt);
         mOfficerGetKiType1InThisSessionList.append(selectedOfficerAfterRandom);
@@ -278,7 +263,7 @@ void CreateKiMethod::generateQuarterKi()
     else //Nếu số người trong danh sách chưa đạt KiType1 nhiều hơn hoặc bằng số KiType1 cần tạo
     {
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType1People, candidateForKiType1ListStt);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE1, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType1Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set KiType1 trong turn này để xử lý KiType2
         mOfficerGetKiType1InThisSessionList.append(selectedOfficerAfterRandom);
     }
@@ -293,13 +278,13 @@ void CreateKiMethod::generateQuarterKi()
     if (candidatesForKiType2ListStt.size() < mKiType2People)
     {
         //thì toàn bộ số người trong sanh sách ở bước trên sẽ đạt Ki Type2
-        setKiXQuaterStatusOfThemToYes(KI_TYPE2, candidatesForKiType2ListStt);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType2Index(), candidatesForKiType2ListStt);
         //và reset trạng thái Ki Type2 của toàn bộ số người đã đạt Ki Type2 khác về "Không"
         //roi đưa vào danh sách để random số Ki Type2 còn thiếu.
-        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KI_TYPE2, candidatesForKiType2ListStt);
+        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KiConfig::getInstance()->getKiType2Index(), candidatesForKiType2ListStt);
         //random
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType2People, randomList);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE2, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType2Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set Ki12 trong turn này để xử lý Ki Type4
         officerGetKi12InThisSessionList.append(candidatesForKiType2ListStt);
         officerGetKi12InThisSessionList.append(selectedOfficerAfterRandom);
@@ -310,7 +295,7 @@ void CreateKiMethod::generateQuarterKi()
     else
     {
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType2People, candidatesForKiType2ListStt);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE2, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType2Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set Ki12 trong turn này để xử lý KiType4
         officerGetKi12InThisSessionList.append(selectedOfficerAfterRandom);
         mOfficerGetKiType2InThisSessionList = officerGetKi12InThisSessionList;
@@ -327,13 +312,13 @@ void CreateKiMethod::generateQuarterKi()
     if (candidatesForKiType4ListStt.size() < mKiType4People)
     {
         //thì toàn bộ số người trong sanh sách ở bước trên sẽ đạt Ki Type4
-        setKiXQuaterStatusOfThemToYes(KI_TYPE4, candidatesForKiType4ListStt);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType4Index(), candidatesForKiType4ListStt);
         //và reset trạng thái Ki Type4 của toàn bộ số người đã đạt Ki Type4 khác về "Không"
         //roi đưa vào danh sách để random số Ki Type4 còn thiếu.
-        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KI_TYPE4, candidatesForKiType4ListStt);
+        QVector<int> randomList = setKiXQuaterStatusOfThemToNo(KiConfig::getInstance()->getKiType4Index(), candidatesForKiType4ListStt);
         //random
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType4People, randomList);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE4, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType4Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set Ki124 trong turn này để xử lý Ki Type3
         officerGetKi124InThisSessionList.append(candidatesForKiType4ListStt);
         officerGetKi124InThisSessionList.append(selectedOfficerAfterRandom);
@@ -344,7 +329,7 @@ void CreateKiMethod::generateQuarterKi()
     else
     {
         QVector<int> selectedOfficerAfterRandom = getRandomSelectedList(mKiType4People, candidatesForKiType4ListStt);
-        setKiXQuaterStatusOfThemToYes(KI_TYPE4, selectedOfficerAfterRandom);
+        setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType4Index(), selectedOfficerAfterRandom);
         //Lưu lại những người được set Ki12 trong turn này để xử lý KiType4
         officerGetKi124InThisSessionList.append(selectedOfficerAfterRandom);
         mOfficerGetKiType4InThisSessionList = officerGetKi124InThisSessionList;
@@ -354,7 +339,7 @@ void CreateKiMethod::generateQuarterKi()
     //4. Set KiType3
     //Mặc định những người còn lại trong danh sách là Ki Type3.
     QVector<int> candidatesForKiType3ListStt = getCandidateForKiType3(officerGetKi124InThisSessionList);
-    setKiXQuaterStatusOfThemToYes(KI_TYPE3, candidatesForKiType3ListStt);
+    setKiXQuaterStatusOfThemToYes(KiConfig::getInstance()->getKiType3Index(), candidatesForKiType3ListStt);
     mOfficerGetKiType3InThisSessionList.append(candidatesForKiType3ListStt);
     LOG_DEBUG("Ki Type1 = %d ng, Ki Type2 = %d ng, Ki Type3 =%d ng, Ki Type4 = %d ng",
               mOfficerGetKiType1InThisSessionList.size(), mOfficerGetKiType2InThisSessionList.size(),
@@ -369,21 +354,21 @@ void CreateKiMethod::generateMonthlyKi(int month)
     //1.1 Chọn danh sách những người có tổng số Ki Type1 của tháng ít hơn những người còn lại 1 đơn vị.
     QVector<int> peopleHavingLessThanOtherOneUnitOfKiType1;
     QVector<int> peopleHavingMoreThanOtherOneUnitOfKiType1;
-    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KI_TYPE1, month, peopleHavingLessThanOtherOneUnitOfKiType1, peopleHavingMoreThanOtherOneUnitOfKiType1);
+    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KiConfig::getInstance()->getKiType1Index(), month, peopleHavingLessThanOtherOneUnitOfKiType1, peopleHavingMoreThanOtherOneUnitOfKiType1);
     //1.2 Thực thi
     setKiType1AtMonthXOfQuarter(month, peopleHavingMoreThanOtherOneUnitOfKiType1, peopleHavingLessThanOtherOneUnitOfKiType1);
     //2   Set KiType2
     //2.1 Chọn danh sách những người có tổng số Ki Type2 của tháng ít hơn những người còn lại 1 đơn vị.
     QVector<int> peopleHavingLessThanOtherOneUnitOfKiType2;
     QVector<int> peopleHavingMoreThanOtherOneUnitOfKiType2;
-    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KI_TYPE2, month, peopleHavingLessThanOtherOneUnitOfKiType2, peopleHavingMoreThanOtherOneUnitOfKiType2);
+    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KiConfig::getInstance()->getKiType2Index(), month, peopleHavingLessThanOtherOneUnitOfKiType2, peopleHavingMoreThanOtherOneUnitOfKiType2);
     //2.2 Thực thi
     setKiType2AtMonthXOfQuarter(month, peopleHavingMoreThanOtherOneUnitOfKiType2, peopleHavingLessThanOtherOneUnitOfKiType2);
     //3   Set KiType4
     //3.1 Chọn danh sách những người có tổng số Ki Type4 của tháng ít hơn những người còn lại 1 đơn vị.
     QVector<int> peopleHavingLessThanOtherOneUnitOfKiType4;
     QVector<int> peopleHavingMoreThanOtherOneUnitOfKiType4;
-    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KI_TYPE4, month, peopleHavingLessThanOtherOneUnitOfKiType4, peopleHavingMoreThanOtherOneUnitOfKiType4);
+    getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(KiConfig::getInstance()->getKiType4Index(), month, peopleHavingLessThanOtherOneUnitOfKiType4, peopleHavingMoreThanOtherOneUnitOfKiType4);
     //3.2 Thực thi
     setKiType4AtMonthXOfQuarter(month, peopleHavingMoreThanOtherOneUnitOfKiType4, peopleHavingLessThanOtherOneUnitOfKiType4);
     //4.  Set KiType3
@@ -409,7 +394,7 @@ void CreateKiMethod::getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiT
         }
     }
 
-    if (kiType == KI_TYPE1)
+    if (kiType == KiConfig::getInstance()->getKiType1Index())
     {
         for (int index = 0; index < mExecListOfficer.size(); index++)
         {
@@ -427,7 +412,7 @@ void CreateKiMethod::getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiT
             }
         }
     }
-    else if (kiType == KI_TYPE2)
+    else if (kiType == KiConfig::getInstance()->getKiType2Index())
     {
         for (int index = 0; index < mExecListOfficer.size(); index++)
         {
@@ -448,7 +433,7 @@ void CreateKiMethod::getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiT
             }
         }
     }
-    else if (kiType == KI_TYPE4)
+    else if (kiType == KiConfig::getInstance()->getKiType4Index())
     {
         for (int index = 0; index < mExecListOfficer.size(); index++)
         {
@@ -801,7 +786,7 @@ QVector<int> CreateKiMethod::getCandidateForKiType1()
 
     for (auto officer = mExecListOfficer.begin(); officer != mExecListOfficer.end(); officer++)
     {
-        if (officer->data()->getKiXStatus(KI_TYPE1) != YES)
+        if (officer->data()->getKiXStatus(KiConfig::getInstance()->getKiType1Index()) != YES)
         {
             listOfficerNotGetKiType1.push_back(officer->data()->getOfficerStt().toInt());
         }
@@ -817,7 +802,7 @@ QVector<int> CreateKiMethod::getCandidateForKiType2(const QVector<int>& listSetK
     for (auto officer = mExecListOfficer.begin(); officer != mExecListOfficer.end(); officer++)
     {
         if (!listSetKiType1ThisSession.contains(officer->data()->getOfficerStt().toInt())
-            && officer->data()->getKiXStatus(KI_TYPE2) != YES)
+            && officer->data()->getKiXStatus(KiConfig::getInstance()->getKiType2Index()) != YES)
         {
             listCandidateKiType2.push_back(officer->data()->getOfficerStt().toInt());
         }
@@ -833,7 +818,7 @@ QVector<int> CreateKiMethod::getCandidateForKiType4(const QVector<int>& listSetK
     for (auto officer = mExecListOfficer.begin(); officer != mExecListOfficer.end(); officer++)
     {
         if (!listSetKiType12ThisSesson.contains(officer->data()->getOfficerStt().toInt())
-            && officer->data()->getKiXStatus(KI_TYPE4) != YES)
+            && officer->data()->getKiXStatus(KiConfig::getInstance()->getKiType4Index()) != YES)
         {
             listCandidateKiType4.push_back(officer->data()->getOfficerStt().toInt());
         }

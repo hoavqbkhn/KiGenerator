@@ -104,54 +104,54 @@ void Officer::insertKiXMonth(const QString& kiXMonth, int pos)
         if (kiXMonth == KiConfig::getInstance()->getKiType1Symbol())
         {
             // tăng số tháng của loại ki này
-            int amount = mKiXMonthlyAmount[KI_TYPE1].toInt();
+            int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType1Index()].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_TYPE1] = QString::number(amount);
+            mKiXMonthlyAmount[KiConfig::getInstance()->getKiType1Index()] = QString::number(amount);
         }
         else if (kiXMonth == KiConfig::getInstance()->getKiType2Symbol())
         {
-            int amount = mKiXMonthlyAmount[KI_TYPE2].toInt();
+            int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType2Index()].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_TYPE2] = QString::number(amount);
+            mKiXMonthlyAmount[KiConfig::getInstance()->getKiType2Index()] = QString::number(amount);
         }
         else if (kiXMonth == KiConfig::getInstance()->getKiType3Symbol())
         {
-            int amount = mKiXMonthlyAmount[KI_TYPE3].toInt();
+            int amount = mKiXMonthlyAmount[KiConfig::getInstance()->KiConfig::getInstance()->getKiType3Index()].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_TYPE3] = QString::number(amount);
+            mKiXMonthlyAmount[KiConfig::getInstance()->getKiType3Index()] = QString::number(amount);
         }
         else if (kiXMonth == KiConfig::getInstance()->getKiType4Symbol())
         {
-            int amount = mKiXMonthlyAmount[KI_TYPE4].toInt();
+            int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType4Index()].toInt();
             amount++;
-            mKiXMonthlyAmount[KI_TYPE4] = QString::number(amount);
+            mKiXMonthlyAmount[KiConfig::getInstance()->getKiType4Index()] = QString::number(amount);
         }
         else if (kiXMonth == KI_NOT_SET)
         {
             // giảm số tháng của loại ki này
             if (ki == KiConfig::getInstance()->getKiType1Symbol())
             {
-                int amount = mKiXMonthlyAmount[KI_TYPE1].toInt();
+                int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType1Index()].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_TYPE1] = QString::number(amount);
+                mKiXMonthlyAmount[KiConfig::getInstance()->getKiType1Index()] = QString::number(amount);
             }
             else if (ki == KiConfig::getInstance()->getKiType2Symbol())
             {
-                int amount = mKiXMonthlyAmount[KI_TYPE2].toInt();
+                int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType2Index()].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_TYPE2] = QString::number(amount);
+                mKiXMonthlyAmount[KiConfig::getInstance()->getKiType2Index()] = QString::number(amount);
             }
             else if (ki == KiConfig::getInstance()->getKiType3Symbol())
             {
-                int amount = mKiXMonthlyAmount[KI_TYPE3].toInt();
+                int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType3Index()].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_TYPE3] = QString::number(amount);
+                mKiXMonthlyAmount[KiConfig::getInstance()->getKiType3Index()] = QString::number(amount);
             }
             else if (ki == KiConfig::getInstance()->getKiType4Symbol())
             {
-                int amount = mKiXMonthlyAmount[KI_TYPE4].toInt();
+                int amount = mKiXMonthlyAmount[KiConfig::getInstance()->getKiType4Index()].toInt();
                 amount--;
-                mKiXMonthlyAmount[KI_TYPE4] = QString::number(amount);
+                mKiXMonthlyAmount[KiConfig::getInstance()->getKiType4Index()] = QString::number(amount);
             }
         }
     }
@@ -182,19 +182,19 @@ void Officer::insertKiXQuarter(const QString& kiXQuarter, int pos)
 
         if (kiXQuarter == KiConfig::getInstance()->getKiType1Symbol())
         {
-            insertKiXStatus(YES, KI_TYPE1);
+            insertKiXStatus(YES, KiConfig::getInstance()->getKiType1Index());
         }
         else if (kiXQuarter == KiConfig::getInstance()->getKiType2Symbol())
         {
-            insertKiXStatus(YES, KI_TYPE2);
+            insertKiXStatus(YES, KiConfig::getInstance()->getKiType2Index());
         }
         else if (kiXQuarter == KiConfig::getInstance()->getKiType3Symbol())
         {
-            insertKiXStatus(YES, KI_TYPE3);
+            insertKiXStatus(YES, KiConfig::getInstance()->getKiType3Index());
         }
         else if (kiXQuarter == KiConfig::getInstance()->getKiType4Symbol())
         {
-            insertKiXStatus(YES, KI_TYPE4);
+            insertKiXStatus(YES, KiConfig::getInstance()->getKiType4Index());
         }
     }
     else

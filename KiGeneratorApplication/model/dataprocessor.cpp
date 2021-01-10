@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <QDateTime>
 #include <QRandomGenerator>
+#include "config/kiconfig.h"
 DataProcessor::DataProcessor()
 {
 }
@@ -166,14 +167,14 @@ void DataProcessor::searchAllFieldColumnIndex()
     mKiQuaterXColumnIndex[QUARTER2] = findAFieldColumnIndex(KI_QUY_2);
     mKiQuaterXColumnIndex[QUARTER3] = findAFieldColumnIndex(KI_QUY_3);
     mKiQuaterXColumnIndex[QUARTER4] = findAFieldColumnIndex(KI_QUY_4);
-    mKiXMonthlyAmonutColumnIndex[KI_TYPE1] = findAFieldColumnIndex(SO_KI_A_THANG);
-    mKiXMonthlyAmonutColumnIndex[KI_TYPE2] = findAFieldColumnIndex(SO_KI_B_THANG);
-    mKiXMonthlyAmonutColumnIndex[KI_TYPE3] = findAFieldColumnIndex(SO_KI_C_THANG);
-    mKiXMonthlyAmonutColumnIndex[KI_TYPE4] = findAFieldColumnIndex(SO_KI_D_THANG);
-    mKiXStatusColumnIndex[KI_TYPE1] = findAFieldColumnIndex(KI_A_STATUS);
-    mKiXStatusColumnIndex[KI_TYPE2] = findAFieldColumnIndex(KI_B_STATUS);
-    mKiXStatusColumnIndex[KI_TYPE3] = findAFieldColumnIndex(KI_C_STATUS);
-    mKiXStatusColumnIndex[KI_TYPE4] = findAFieldColumnIndex(KI_D_STATUS);
+    mKiXMonthlyAmonutColumnIndex[KI_A_INDEX] = findAFieldColumnIndex(SO_KI_A_THANG);
+    mKiXMonthlyAmonutColumnIndex[KI_B_INDEX] = findAFieldColumnIndex(SO_KI_B_THANG);
+    mKiXMonthlyAmonutColumnIndex[KI_C_INDEX] = findAFieldColumnIndex(SO_KI_C_THANG);
+    mKiXMonthlyAmonutColumnIndex[KI_D_INDEX] = findAFieldColumnIndex(SO_KI_D_THANG);
+    mKiXStatusColumnIndex[KI_A_INDEX] = findAFieldColumnIndex(KI_A_STATUS);
+    mKiXStatusColumnIndex[KI_B_INDEX] = findAFieldColumnIndex(KI_B_STATUS);
+    mKiXStatusColumnIndex[KI_C_INDEX] = findAFieldColumnIndex(KI_C_STATUS);
+    mKiXStatusColumnIndex[KI_D_INDEX] = findAFieldColumnIndex(KI_D_STATUS);
     mKiNotAutoSetColumnIndex = findAFieldColumnIndex(KI_NOT_AUTOSET);
 }
 

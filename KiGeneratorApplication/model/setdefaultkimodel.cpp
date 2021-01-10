@@ -1,6 +1,6 @@
 #include "setdefaultkimodel.h"
 #include "common.h"
-
+#include "config/kiconfig.h"
 SetDefaultOfficerKiModel::SetDefaultOfficerKiModel()
 {
 }
@@ -42,19 +42,19 @@ QVariant SetDefaultOfficerKiModel::data(const QModelIndex& index, int role) cons
     }
     else if (role == KI_KiAStatusRole)
     {
-        return infoList->getKiXStatus(KI_TYPE1);
+        return infoList->getKiXStatus(KiConfig::getInstance()->getKiType1Index());
     }
     else if (role == KI_KiBStatusRole)
     {
-        return infoList->getKiXStatus(KI_TYPE2);
+        return infoList->getKiXStatus(KiConfig::getInstance()->getKiType2Index());
     }
     else if (role == KI_KiCStatusRole)
     {
-        return infoList->getKiXStatus(KI_TYPE3);
+        return infoList->getKiXStatus(KiConfig::getInstance()->getKiType3Index());
     }
     else if (role == KI_KiDStatusRole)
     {
-        return infoList->getKiXStatus(KI_TYPE4);
+        return infoList->getKiXStatus(KiConfig::getInstance()->getKiType4Index());
     }
 
     return QVariant();
