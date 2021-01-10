@@ -58,10 +58,10 @@ const int QUARTER2 = 1;
 const int QUARTER3 = 2;
 const int QUARTER4 = 3;
 
-const int KI_TYPE1 = 0;
-const int KI_TYPE2 = 1;
-const int KI_TYPE3 = 2;
-const int KI_TYPE4 = 3;
+const int KI_A_INDEX = 0;
+const int KI_B_INDEX = 1;
+const int KI_C_INDEX = 2;
+const int KI_D_INDEX = 3;
 
 const int NUMBER_OF_MONTH = 12;
 const int NUMBER_OF_QUATER = 4;

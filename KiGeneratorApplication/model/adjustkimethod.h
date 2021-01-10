@@ -21,39 +21,39 @@ class AdjustKiMethod: public KiGeneratorHelper
 
     private:
         //variables
-        float mKiAPercent {0};
-        float mKiBPercent {0};
-        float mKiCPercent {0};
-        float mKiDPercent {0};
-        int mKiAPeople {0};
-        int mKiBPeople {0};
-        int mKiCPeople {0};
-        int mKiDPeople {0};
+        float mKiType1Percent {0};
+        float mKiType2Percent {0};
+        float mKiType3Percent {0};
+        float mKiType4Percent {0};
+        int mKiType1People {0};
+        int mKiType2People {0};
+        int mKiType3People {0};
+        int mKiType4People {0};
         int mThisQuarter {0};
         int mNumberOfOfficer {0};
         bool mIsPercentMode {false};
         QVector<QSharedPointer<Officer>> mListFixedKiOfficer;
         QVector<QSharedPointer<Officer>> mOfficialListOfficer;
-        QVector<int> mOfficerGetKiAInThisSessionList;
-        QVector<int> mOfficerGetKiBInThisSessionList;
-        QVector<int> mOfficerGetKiCInThisSessionList;
-        QVector<int> mOfficerGetKiDInThisSessionList;
+        QVector<int> mOfficerGetKiType1InThisSessionList;
+        QVector<int> mOfficerGetKiType2InThisSessionList;
+        QVector<int> mOfficerGetKiType3InThisSessionList;
+        QVector<int> mOfficerGetKiType4InThisSessionList;
 
         //function
         QVector<QSharedPointer<Officer>> mExecListOfficer;
         QVector<int> setKiXQuaterStatusOfThemToNo(int kiType, const QVector<int>& listOfficerStt);
         void generateQuarterKi();
         void generateMonthlyKi(int month);
-        QVector<int> getCandidateForKiA(const QVector<int>& listGotKiAInOldSession);
-        QVector<int> getCandidateForKiB(const QVector<int>& listSetKiAThisSession, const QVector<int>& listGotKiBInOldSession);
-        QVector<int> getCandidateForKiD(const QVector<int>& listSetKiABThisSession, const QVector<int>& listGotKiDInOldSession);
-        QVector<int> getCandidateForKiC(const QVector<int>& listSetKiABDThisSesson);
+        QVector<int> getCandidateForKiType1(const QVector<int>& listGotKiAInOldSession);
+        QVector<int> getCandidateForKiType2(const QVector<int>& listSetKiAThisSession, const QVector<int>& listGotKiBInOldSession);
+        QVector<int> getCandidateForKiType4(const QVector<int>& listSetKiABThisSession, const QVector<int>& listGotKiDInOldSession);
+        QVector<int> getCandidateForKiType3(const QVector<int>& listSetKiABDThisSesson);
         void setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int>& listOfficerStt);
         void getPeopleHavingLessThanAndMoreThanOtherOneUintOfKiX(int kiType, int month, QVector<int>& listLess, QVector<int>& listMore);
-        void setKiAAtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
-        void setKiBAtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
-        void setKiDAtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
-        void setKiCAtMonthXForLeftPeople(int month);
+        void setKiType1AtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
+        void setKiType2AtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
+        void setKiType4AtMonthXOfQuarter(int month, QVector<int> listMore, QVector<int> listLess);
+        void setKiType3AtMonthXForLeftPeople(int month);
         void embroilList(QVector<QSharedPointer<Officer>>& list);
         void removeFixingKiOfficer();
         void addFixingKiOfficer();

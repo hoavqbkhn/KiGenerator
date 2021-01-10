@@ -2,7 +2,26 @@
 KiConfig* KiConfig::instance = NULL;
 KiConfig::KiConfig()
 {
+}
 
+int KiConfig::getKiType4Index() const
+{
+    return mKiType4Index;
+}
+
+int KiConfig::getKiType3Index() const
+{
+    return mKiType3Index;
+}
+
+int KiConfig::getKiType2Index() const
+{
+    return mKiType2Index;
+}
+
+int KiConfig::getKiType1Index() const
+{
+    return mKiType1Index;
 }
 
 KiConfig* KiConfig::getInstance()
