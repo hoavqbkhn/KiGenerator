@@ -230,6 +230,19 @@ void DataProcessor::exportData(QVector<QSharedPointer<Officer>> list, const QStr
             int row = list[index]->getRowInDocument();
             mXlsx->write(row, col, list[index]->getKiXMonthlyAmount(j).toInt());
         }
+
+        {
+            int col = mKiAQuaterSetLastYear;
+            int row = list[index]->getRowInDocument();
+            mXlsx->write(row, col, list[index]->getLastYearGotKiAQuarter());
+        }
+
+        {
+            int col = mKiDQuaterSetLastYear;
+            int row = list[index]->getRowInDocument();
+            mXlsx->write(row, col, list[index]->getLastYearGotKiDQuarter());
+        }
+
     }
 
     mXlsx->saveAs(url);

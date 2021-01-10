@@ -18,6 +18,9 @@ public:
     int getKiType3Index() const;
     int getKiType4Index() const;
 
+    int getThisYear() const;
+    void setThisYear(int thisYear);
+
 private:
     static KiConfig* instance;
     KiConfig();
@@ -30,6 +33,8 @@ private:
     int mKiType2Index{0}; //lưu giá trị index của ki type2 trong file excel (Ở đây type2 đang là KiA có index  = 0 trong file excel)
     int mKiType3Index{2};
     int mKiType4Index{1};
+
+    int mThisYear{2020};
 
 };
 

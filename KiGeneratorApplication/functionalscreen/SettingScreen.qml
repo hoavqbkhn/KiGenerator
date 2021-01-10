@@ -82,7 +82,7 @@ Item {
                     Layout.preferredWidth: 1
                     Layout.preferredHeight: 5
                     lbName: KiAppStore.isPercentMode ? "KI A (%)" : "KI A (người)"
-                    tfText: "10"
+                    tfText: "25"
                 }
                 ExtrasTextField {
                     id: tfKiB
@@ -91,7 +91,7 @@ Item {
                     Layout.preferredWidth: 1
                     Layout.preferredHeight: 5
                     lbName: KiAppStore.isPercentMode ? "KI B (%)" : "KI B (người)"
-                    tfText: "30"
+                    tfText: "60"
                 }
                 ExtrasTextField {
                     id: tfKiD
@@ -100,7 +100,7 @@ Item {
                     Layout.preferredWidth: 1
                     Layout.preferredHeight: 5
                     lbName: KiAppStore.isPercentMode ? "KI D (%)" : "KI D (người)"
-                    tfText: "10"
+                    tfText: "4"
                 }
             }
         }

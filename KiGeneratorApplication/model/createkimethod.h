@@ -43,7 +43,7 @@ class CreateKiMethod : public KiGeneratorHelper
         //function
         QVector<QSharedPointer<Officer>> mExecListOfficer;
         void setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int>& listOfficerStt);
-        QVector<int> setKiXQuaterStatusOfThemToNo(int kiType, const QVector<int>& listOfficerStt);
+        QVector<int> setKiXQuaterStatusOfThemToNo(int kiType, const QVector<int>& listOfficerStt, int neededOfficerToBeReseted = -1);
         void generateQuarterKi();
         void generateMonthlyKi(int month);
         QVector<int> getCandidateForKiType1();

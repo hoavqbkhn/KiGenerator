@@ -32,6 +32,8 @@ Officer::Officer(const QSharedPointer<Officer>& other)
     }
 
     this->mRowInDocument = other->getRowInDocument();
+    this->mLastYearGotKiAQuarter = other->getLastYearGotKiAQuarter();
+    this->mLastYearGotKiDQuarter = other->getLastYearGotKiDQuarter();
 }
 
 Officer::~Officer()
@@ -178,6 +180,12 @@ void Officer::insertKiXQuarter(const QString& kiXQuarter, int pos)
             insertKiXMonth(KI_NOT_SET, pos * 3);
             insertKiXMonth(KI_NOT_SET, pos * 3 + 1);
             insertKiXMonth(KI_NOT_SET, pos * 3 + 2);
+        }
+
+        if(kiXQuarter == "A"){
+            mLastYearGotKiAQuarter = KiConfig::getInstance()->getThisYear();
+        }else if(kiXQuarter == "D"){
+            mLastYearGotKiDQuarter = KiConfig::getInstance()->getThisYear();
         }
 
         if (kiXQuarter == KiConfig::getInstance()->getKiType1Symbol())
