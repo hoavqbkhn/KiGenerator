@@ -48,6 +48,10 @@ QSharedPointer<vtx::flux::Action>  KiAppMiddleware::process(const QSharedPointer
             emit signalDispatchActionToBusiness(action);
             return QSharedPointer<vtx::flux::Action>(new vtx::flux::Action(ActionType::None_Action, QVariant()));
 
+        case ActionType::Config:
+            emit signalDispatchActionToBusiness(action);
+            return QSharedPointer<vtx::flux::Action>(new vtx::flux::Action(ActionType::None_Action, QVariant()));
+
         default:
             return action;
     }

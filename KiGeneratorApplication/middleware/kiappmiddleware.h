@@ -24,7 +24,7 @@ class  KiAppMiddleware : public QObject, public vtx::flux::Middleware, public Ki
         void dispatchActionUpdateResult(QSharedPointer<InnerMessage> data) override;
         void dispatchActionNotifyIssue(const QString& issue) override;
         void dispatchActionUpdateFixingKiOnDoneScreen(const QString& id, const QString& ki) override;
-        void dispatchActionUpdateThisQuarter(int quarter);
+        void dispatchActionUpdateThisQuarter(int quarter) override;
 
     signals:
         void signalDispatchActionToBusiness(QSharedPointer<Action> actionFromMiddleware);

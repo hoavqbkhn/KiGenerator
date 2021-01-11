@@ -394,14 +394,26 @@ Item {
 
         }
     }
+    ConfigDialog{
+        id: configDialog
+        x: (parent.width - configDialog.width)/2
+        y: (parent.height - configDialog.height)/2
+        visible: false
+        onAccepted: {
+
+        }
+        onClosed: {
+        }
+    }
+
 
     Rectangle {
         id: rectNext
         anchors.fill: parent
         anchors.topMargin: parent.height * 85/100
         anchors.bottomMargin: parent.height * 5 /100
-        anchors.leftMargin: parent.width * 20 / 100
-        anchors.rightMargin: parent.width * 20 / 100
+        anchors.leftMargin: parent.width * 15 / 100
+        anchors.rightMargin: parent.width * 15 / 100
         color: noColor
         border.color: noColor
         RowLayout {
@@ -419,6 +431,18 @@ Item {
                 onClicked: {
                     console.log("loading...")
                     ActionProvider.openFileKiData()
+                }
+            }
+            MyButton{
+                id: btnConfig
+                Layout.alignment: Qt.AlignCenter
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                buttonName: "Cấu hình"
+                enabled: KiAppStore.isLoadedFile
+                onClicked: {
+                    console.log("config...")
+                    configDialog.open()
                 }
             }
             MyButton {
@@ -447,6 +471,8 @@ Item {
                     gotoSettingScreen()
                 }
             }
+
+
         }
     }
 }

@@ -54,7 +54,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    officer.h \
     kiapp.h \
     action/actionprovider.h \
     action/actiontype.h \

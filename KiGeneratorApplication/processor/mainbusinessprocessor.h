@@ -51,6 +51,7 @@ class MainBusinessProcessor: public ProcessorAbstract
         void processActionExport(QSharedPointer<vtx::flux::Action> action);
         void processActionUpdateFixingList(QSharedPointer<vtx::flux::Action> action);
         void processActionAdjustKi(QSharedPointer<vtx::flux::Action> action);
+        void processActionConfig(QSharedPointer<vtx::flux::Action> action);
 };
 
 #endif // MAINBUSINESSPROCESSOR_H

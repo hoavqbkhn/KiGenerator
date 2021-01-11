@@ -147,7 +147,7 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                     mKiType1People--;
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType2Index())
+            else if (kiType == KiConfig::getInstance()->getKiType2Index())
             {
                 if (mKiType2People > 0)
                 {
@@ -156,7 +156,7 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                     mKiType2People--;
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType3Index())
+            else if (kiType == KiConfig::getInstance()->getKiType3Index())
             {
                 if (mKiType3People > 0)
                 {
@@ -165,7 +165,7 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                     mKiType3People--;
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType4Index())
+            else if (kiType == KiConfig::getInstance()->getKiType4Index())
             {
                 if (mKiType4People > 0)
                 {
@@ -174,7 +174,6 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
                     mKiType4People--;
                 }
             }
-
         }
     }
 }
@@ -182,22 +181,40 @@ void CreateKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
 QVector<int> CreateKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVector<int>& listOfficerStt, int neededOfficerToBeReseted)
 {
     QVector<int> randomList;
-    if(kiType == KI_A_INDEX || kiType == KI_D_INDEX){
+
+    if (kiType == KI_A_INDEX || kiType == KI_D_INDEX)
+    {
         //sắp xếp lại danh sách nhân viên theo thứ tự mà "càng lâu chưa được loại kiType này" lên trước.
-        std::sort(mExecListOfficer.begin(), mExecListOfficer.end(),[&](QSharedPointer<Officer> off1, QSharedPointer<Officer> off2){
-            if(kiType == KI_A_INDEX){
+        std::sort(mExecListOfficer.begin(), mExecListOfficer.end(), [&](QSharedPointer<Officer> off1, QSharedPointer<Officer> off2)
+        {
+            if (kiType == KI_A_INDEX)
+            {
                 return off1->getLastYearGotKiAQuarter() < off2->getLastYearGotKiAQuarter();
-            }else if(kiType == KI_D_INDEX){
+            }
+            else if (kiType == KI_D_INDEX)
+            {
                 return off1->getLastYearGotKiDQuarter() < off2->getLastYearGotKiDQuarter();
+            }
+            else
+            {
+                return true;
             }
         });
     }
+
     int cntRst = 0;
+
     //reset trạng thái Ki X của toàn bộ những người ko được fix cứng KI cho đến khi đủ số lượng
     for (int index = 0; index < mExecListOfficer.size(); index++)
     {
-        //đủ lượng người thì không cần reset trạng thái về 0 nữa
-        if((kiType == KI_A_INDEX || kiType == KI_D_INDEX) && cntRst == neededOfficerToBeReseted){
+        //Lấy cho đến khi hết số người đạt loại Ki này đủ từ x năm trở lên
+        if ((kiType == KI_A_INDEX && ((KiConfig::getInstance()->getThisYear() - mExecListOfficer[index]->getLastYearGotKiAQuarter()) < KiConfig::getInstance()->getDisQuaterA())))
+        {
+            break;
+        }
+
+        if ((kiType == KI_D_INDEX && ((KiConfig::getInstance()->getThisYear() - mExecListOfficer[index]->getLastYearGotKiDQuarter()) < KiConfig::getInstance()->getDisQuaterD())))
+        {
             break;
         }
 
@@ -212,21 +229,19 @@ QVector<int> CreateKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
                     randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType2Index())
+            else if (kiType == KiConfig::getInstance()->getKiType2Index())
             {
                 if (mKiType2People > 0)
                 {
-
                     if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
                     {
                         mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType2Index());
                         cntRst++;
                         randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                     }
-
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType3Index())
+            else if (kiType == KiConfig::getInstance()->getKiType3Index())
             {
                 if (mKiType3People > 0)
                 {
@@ -235,7 +250,8 @@ QVector<int> CreateKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
                     randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                 }
             }
-            else if(kiType == KiConfig::getInstance()->getKiType4Index()){
+            else if (kiType == KiConfig::getInstance()->getKiType4Index())
+            {
                 if (mKiType4People > 0)
                 {
                     if (!mOfficerGetKiType1InThisSessionList.contains(mExecListOfficer[index]->getOfficerStt().toInt()) &&
@@ -649,7 +665,7 @@ void CreateKiMethod::setKiType4AtMonthXOfQuarter(int month, QVector<int> listMor
                 if (mExecListOfficer[index2]->getOfficerStt().toInt() == tempList[index1]->getOfficerStt().toInt())
                 {
                     mExecListOfficer[index2]->insertKiXMonth(KiConfig::getInstance()->getKiType4Symbol(), month);
-                    LOG_DEBUG("STT % d Get KiType4 in Month % d Quarter % d", mExecListOfficer[index2]->getOfficerStt().toInt(), month + 1 , mThisQuarter + 1);
+                    LOG_DEBUG("STT % d Get KiType4 in Month % d Quarter % d", mExecListOfficer[index2]->getOfficerStt().toInt(), month + 1, mThisQuarter + 1);
                     maxTargets--;
                 }
             }

@@ -38,8 +38,10 @@ class DataProcessor : public InnerMessage
         int mKiXStatusColumnIndex[NUMBER_OF_TYPE_KI];
         int mKiXMonthlyAmonutColumnIndex[NUMBER_OF_TYPE_KI];
         int mKiNotAutoSetColumnIndex {0};
-        int mKiAQuaterSetLastYear{0};
-        int mKiDQuaterSetLastYear{0};
+        int mKiAQuaterSetLastYearColumnIndex{0};
+        int mKiBQuaterSetLastYearColumnIndex{0};
+        int mKiCQuaterSetLastYearColumnIndex{0};
+        int mKiDQuaterSetLastYearColumnIndex{0};
 
         int findAFieldColumnIndex(const QString& fieldName);
         void searchAllFieldColumnIndex();

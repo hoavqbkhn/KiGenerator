@@ -182,10 +182,21 @@ void Officer::insertKiXQuarter(const QString& kiXQuarter, int pos)
             insertKiXMonth(KI_NOT_SET, pos * 3 + 2);
         }
 
-        if(kiXQuarter == "A"){
+        if (kiXQuarter == "A")
+        {
             mLastYearGotKiAQuarter = KiConfig::getInstance()->getThisYear();
-        }else if(kiXQuarter == "D"){
+        }
+        else if (kiXQuarter == "D")
+        {
             mLastYearGotKiDQuarter = KiConfig::getInstance()->getThisYear();
+        }
+        else if (kiXQuarter == "C")
+        {
+            mLastYearGotKiCQuater = KiConfig::getInstance()->getThisYear();
+        }
+        else if (kiXQuarter == "B")
+        {
+            mLastYearGotKiBQuarter = KiConfig::getInstance()->getThisYear();
         }
 
         if (kiXQuarter == KiConfig::getInstance()->getKiType1Symbol())
@@ -338,4 +349,54 @@ int Officer::getLastYearGotKiAQuarter() const
 void Officer::setLastYearGotKiAQuarter(int lastYearGotKiAQuarter)
 {
     mLastYearGotKiAQuarter = lastYearGotKiAQuarter;
+}
+
+int Officer::getLastYearGotKiDMonth() const
+{
+    return mLastYearGotKiDMonth;
+}
+
+void Officer::setLastYearGotKiDMonth(int lastYearGotKiDMonth)
+{
+    mLastYearGotKiDMonth = lastYearGotKiDMonth;
+}
+
+int Officer::getLastYearGotKiCQuater() const
+{
+    return mLastYearGotKiCQuater;
+}
+
+void Officer::setLastYearGotKiCQuater(int lastYearGotKiCQuater)
+{
+    mLastYearGotKiCQuater = lastYearGotKiCQuater;
+}
+
+int Officer::getLastYearGotKiBQuarter() const
+{
+    return mLastYearGotKiBQuarter;
+}
+
+void Officer::setLastYearGotKiBQuarter(int lastYearGotKiBQuarter)
+{
+    mLastYearGotKiBQuarter = lastYearGotKiBQuarter;
+}
+
+int Officer::getLastYearGotKICMonth() const
+{
+    return mLastYearGotKICMonth;
+}
+
+void Officer::setLastYearGotKICMonth(int lastYearGotKICMonth)
+{
+    mLastYearGotKICMonth = lastYearGotKICMonth;
+}
+
+int Officer::getLastYearGotKiAMonth() const
+{
+    return mLastYearGotKiAMonth;
+}
+
+void Officer::setLastYearGotKiAMonth(int lastYearGotKiAMonth)
+{
+    mLastYearGotKiAMonth = lastYearGotKiAMonth;
 }

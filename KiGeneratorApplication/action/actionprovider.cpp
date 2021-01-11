@@ -53,3 +53,8 @@ void ActionProvider::accessAdjustMode()
 {
     vtx::flux::Dispatcher::instance().dispatch(new vtx::flux::Action(ActionType::AccessAdjustMode, QVariant()));
 }
+
+void ActionProvider::config(QVariantMap config)
+{
+    vtx::flux::Dispatcher::instance().dispatch(new vtx::flux::Action(ActionType::Config, QVariant(config)));
+}

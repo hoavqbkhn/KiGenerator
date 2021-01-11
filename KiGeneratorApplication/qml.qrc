@@ -15,5 +15,7 @@
         <file>functionalscreen/ResultDialog.qml</file>
         <file>functionalscreen/AdjustKiScreen.qml</file>
         <file>functionalscreen/KiXInfo.qml</file>
+        <file>functionalscreen/ConfigDialog.qml</file>
+        <file>common/CustomTextField.qml</file>
     </qresource>
 </RCC>

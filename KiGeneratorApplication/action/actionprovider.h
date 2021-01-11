@@ -28,6 +28,7 @@ class ActionProvider final : public QObject
         Q_INVOKABLE void adjustKi(QVariantMap adjustData);
         Q_INVOKABLE void accessCreateMode();
         Q_INVOKABLE void accessAdjustMode();
+        Q_INVOKABLE void config(QVariantMap config);
 
 
 

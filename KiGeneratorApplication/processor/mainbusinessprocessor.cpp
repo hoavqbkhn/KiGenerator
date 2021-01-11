@@ -64,6 +64,13 @@ void MainBusinessProcessor::processAction(QSharedPointer<Action> action)
                 break;
             }
 
+        case ActionType::Config:
+            {
+                LOG_DEBUG("Config");
+                processActionConfig(action);
+                break;
+            }
+
         case ActionType::AccessAdjustMode:
             {
                 mKiGeneratorHelper = QSharedPointer<AdjustKiMethod>(new AdjustKiMethod());
@@ -123,7 +130,6 @@ void MainBusinessProcessor::processActionGenerate(QSharedPointer<vtx::flux::Acti
               map.value("factorA").toFloat(), map.value("factorB").toFloat(),
               map.value("factorD").toFloat(),
               map.value("isPercentMode").toBool());
-
     mMapKiTypeAndRatio.clear();
     mMapKiTypeAndRatio.insert("A", map.value("factorA").toFloat());
     mMapKiTypeAndRatio.insert("B", map.value("factorB").toFloat());
@@ -132,12 +138,12 @@ void MainBusinessProcessor::processActionGenerate(QSharedPointer<vtx::flux::Acti
     if (map.value("isPercentMode").toBool())
     {
         mKiGeneratorHelper->setKiPercent(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
-                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
+                                         mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
     else
     {
         mKiGeneratorHelper->setKiPeople(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
-                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
+                                        mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
 
     mKiGeneratorHelper->setIsPercentMode(map.value("isPercentMode").toBool());
@@ -200,12 +206,12 @@ void MainBusinessProcessor::processActionAdjustKi(QSharedPointer<vtx::flux::Acti
     if (map.value("isPercentMode").toBool())
     {
         mKiGeneratorHelper->setKiPercent(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
-                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
+                                         mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
     else
     {
         mKiGeneratorHelper->setKiPeople(mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType1Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType2Symbol()],
-                mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
+                                        mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType3Symbol()], mMapKiTypeAndRatio[KiConfig::getInstance()->getKiType4Symbol()]);
     }
 
     mKiGeneratorHelper->setIsPercentMode(map.value("isPercentMode").toBool());
@@ -221,6 +227,19 @@ void MainBusinessProcessor::processActionAdjustKi(QSharedPointer<vtx::flux::Acti
     {
         mMiddlewareInterface->dispatchActionNotifyIssue(issue);
     }
+}
+
+void MainBusinessProcessor::processActionConfig(QSharedPointer<vtx::flux::Action> action)
+{
+    QMap<QString, QVariant> map = action->getPayload<QVariant>().toMap();
+    KiConfig::getInstance()->setThisYear(map.value("thisYear").toInt());
+    KiConfig::getInstance()->setDisQuaterA(map.value("disQuaterA").toInt());
+    KiConfig::getInstance()->setDisQuaterD(map.value("disQuaterD").toInt());
+    KiConfig::getInstance()->setDisMonthD(map.value("disMonthD").toInt());
+    LOG_DEBUG("thisYear = %d, disQuaterA = %d, disQuaterD = %d, disMonthD = %d",
+              map.value("thisYear").toInt(), map.value("disQuaterA").toInt(),
+              map.value("disQuaterD").toInt(),
+              map.value("disMonthD").toInt());
 }
 
 

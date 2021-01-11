@@ -4,6 +4,36 @@ KiConfig::KiConfig()
 {
 }
 
+int KiConfig::getDisMonthD() const
+{
+    return mDisMonthD;
+}
+
+void KiConfig::setDisMonthD(int disMonthD)
+{
+    mDisMonthD = disMonthD;
+}
+
+int KiConfig::getDisQuaterA() const
+{
+    return mDisQuaterA;
+}
+
+void KiConfig::setDisQuaterA(int disYearA)
+{
+    mDisQuaterA = disYearA;
+}
+
+int KiConfig::getDisQuaterD() const
+{
+    return mDisQuaterD;
+}
+
+void KiConfig::setDisQuaterD(int disYearD)
+{
+    mDisQuaterD = disYearD;
+}
+
 int KiConfig::getThisYear() const
 {
     return mThisYear;
@@ -45,7 +75,6 @@ KiConfig* KiConfig::getInstance()
 }
 KiConfig::~KiConfig()
 {
-
 }
 
 QString KiConfig::getKiType1Symbol() const

@@ -57,7 +57,22 @@ class Officer
         int getLastYearGotKiAQuarter() const;
         void setLastYearGotKiAQuarter(int lastYearGotKiAQuarter);
 
-private:
+        int getLastYearGotKiDMonth() const;
+        void setLastYearGotKiDMonth(int lastYearGotKiDMonth);
+
+        int getLastYearGotKiCQuater() const;
+        void setLastYearGotKiCQuater(int lastYearGotKiCQuater);
+
+        int getLastYearGotKiBQuarter() const;
+        void setLastYearGotKiBQuarter(int lastYearGotKiBQuarter);
+
+        int getLastYearGotKICMonth() const;
+        void setLastYearGotKICMonth(int lastYearGotKICMonth);
+
+        int getLastYearGotKiAMonth() const;
+        void setLastYearGotKiAMonth(int lastYearGotKiAMonth);
+
+    private:
         QString mOfficerId {""};
         QString mOfficerName {""};
         QString mOfficerStt {""};
@@ -69,8 +84,16 @@ private:
         QVector<QString> mKiXMonthlyAmount;
         int mRowInDocument {0};
         int mKiNotAutoSet {0};
-        int mLastYearGotKiDQuarter{2017};
-        int mLastYearGotKiAQuarter{2017};
+
+        int mLastYearGotKiAQuarter {0};
+        int mLastYearGotKiBQuarter{0};
+        int mLastYearGotKiCQuater{0};
+        int mLastYearGotKiDQuarter {0};
+
+        int mLastYearGotKiAMonth{0};
+        int mLastYearGotKiBMonth{0};
+        int mLastYearGotKICMonth{0};
+        int mLastYearGotKiDMonth {0};
 };
 
 #endif // OFFICER_H

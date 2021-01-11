@@ -100,17 +100,28 @@ bool DataProcessor::parseData()
         }
 
         //parse last year get kiA quarter
-        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiAQuaterSetLastYear))
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiAQuaterSetLastYearColumnIndex))
         {
             officer->setLastYearGotKiAQuarter(cell->value().toInt());
         }
 
+        //parse last year get kiB quarter
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiBQuaterSetLastYearColumnIndex))
+        {
+            officer->setLastYearGotKiBQuarter(cell->value().toInt());
+        }
+
+        //parse last year get kiC quarter
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiCQuaterSetLastYearColumnIndex))
+        {
+            officer->setLastYearGotKiCQuater(cell->value().toInt());
+        }
+
         //parse last year get kiD quarter
-        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiDQuaterSetLastYear))
+        if (QXlsx::Cell* cell = mXlsx->cellAt(row, mKiDQuaterSetLastYearColumnIndex))
         {
             officer->setLastYearGotKiDQuarter(cell->value().toInt());
         }
-
 
         //Lưu lại để dùng khi export
         officer->setRowInDocument(row);
@@ -189,8 +200,10 @@ void DataProcessor::searchAllFieldColumnIndex()
     mKiXStatusColumnIndex[KI_C_INDEX] = findAFieldColumnIndex(KI_C_STATUS);
     mKiXStatusColumnIndex[KI_D_INDEX] = findAFieldColumnIndex(KI_D_STATUS);
     mKiNotAutoSetColumnIndex = findAFieldColumnIndex(KI_NOT_AUTOSET);
-    mKiAQuaterSetLastYear = findAFieldColumnIndex(LAST_YEAR_SET_KI_A);
-    mKiDQuaterSetLastYear = findAFieldColumnIndex(LAST_YEAR_SET_KI_D);
+    mKiAQuaterSetLastYearColumnIndex = findAFieldColumnIndex(LAST_YEAR_SET_KI_A);
+    mKiBQuaterSetLastYearColumnIndex = findAFieldColumnIndex(LAST_YEAR_SET_KI_B);
+    mKiCQuaterSetLastYearColumnIndex = findAFieldColumnIndex(LAST_YEAR_SET_KI_C);
+    mKiDQuaterSetLastYearColumnIndex = findAFieldColumnIndex(LAST_YEAR_SET_KI_D);
 }
 
 
@@ -232,17 +245,28 @@ void DataProcessor::exportData(QVector<QSharedPointer<Officer>> list, const QStr
         }
 
         {
-            int col = mKiAQuaterSetLastYear;
+            int col = mKiAQuaterSetLastYearColumnIndex;
             int row = list[index]->getRowInDocument();
             mXlsx->write(row, col, list[index]->getLastYearGotKiAQuarter());
         }
 
         {
-            int col = mKiDQuaterSetLastYear;
+            int col = mKiBQuaterSetLastYearColumnIndex;
+            int row = list[index]->getRowInDocument();
+            mXlsx->write(row, col, list[index]->getLastYearGotKiBQuarter());
+        }
+
+        {
+            int col = mKiCQuaterSetLastYearColumnIndex;
+            int row = list[index]->getRowInDocument();
+            mXlsx->write(row, col, list[index]->getLastYearGotKiCQuater());
+        }
+
+        {
+            int col = mKiDQuaterSetLastYearColumnIndex;
             int row = list[index]->getRowInDocument();
             mXlsx->write(row, col, list[index]->getLastYearGotKiDQuarter());
         }
-
     }
 
     mXlsx->saveAs(url);

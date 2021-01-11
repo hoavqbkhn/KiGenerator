@@ -131,37 +131,42 @@ void AdjustKiMethod::setKiXQuaterStatusOfThemToYes(int kiType, const QVector<int
         if (listOfficerStt.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
         {
             //*decrease
-
-                if(kiType == KiConfig::getInstance()->getKiType1Index()){
-                    if (mKiType1People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType1Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType1 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType1People--;
-                    }
-                }else if(kiType == KiConfig::getInstance()->getKiType2Index()){
-                    if (mKiType2People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType2Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType2 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType2People--;
-                    }
-                }else if(kiType == KiConfig::getInstance()->getKiType3Index()){
-                    if (mKiType3People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType3Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType3 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType3People--;
-                    }
-                }else if(kiType == KiConfig::getInstance()->getKiType4Index()){
-                    if (mKiType4People > 0)
-                    {
-                        mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType4Symbol(), mThisQuarter);
-                        LOG_DEBUG("STT %d Get KiType4 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
-                        mKiType4People--;
-                    }
-
+            if (kiType == KiConfig::getInstance()->getKiType1Index())
+            {
+                if (mKiType1People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType1Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType1 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType1People--;
                 }
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType2Index())
+            {
+                if (mKiType2People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType2Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType2 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType2People--;
+                }
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType3Index())
+            {
+                if (mKiType3People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType3Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType3 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType3People--;
+                }
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType4Index())
+            {
+                if (mKiType4People > 0)
+                {
+                    mExecListOfficer[index]->insertKiXQuarter(KiConfig::getInstance()->getKiType4Symbol(), mThisQuarter);
+                    LOG_DEBUG("STT %d Get KiType4 in Quarter %d", mExecListOfficer[index]->getOfficerStt().toInt(), mThisQuarter + 1);
+                    mKiType4People--;
+                }
+            }
         }
     }
 }
@@ -175,13 +180,16 @@ QVector<int> AdjustKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
     {
         if (!listOfficerStt.contains(mExecListOfficer[index]->getOfficerStt().toInt()))
         {
-            if(kiType == KiConfig::getInstance()->getKiType1Index()){
+            if (kiType == KiConfig::getInstance()->getKiType1Index())
+            {
                 if (mKiType1People > 0)
                 {
                     mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType1Index());
                     randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                 }
-            }else if(kiType == KiConfig::getInstance()->getKiType2Index()){
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType2Index())
+            {
                 if (mKiType2People > 0)
                 {
                     mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType2Index());
@@ -191,13 +199,17 @@ QVector<int> AdjustKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
                         randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                     }
                 }
-            }else if(kiType == KiConfig::getInstance()->getKiType3Index()){
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType3Index())
+            {
                 if (mKiType3People > 0)
                 {
                     mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType3Index());
                     randomList.push_back(mExecListOfficer[index]->getOfficerStt().toInt());
                 }
-            }else if(kiType == KiConfig::getInstance()->getKiType4Index()){
+            }
+            else if (kiType == KiConfig::getInstance()->getKiType4Index())
+            {
                 if (mKiType4People > 0)
                 {
                     mExecListOfficer[index]->insertKiXStatus(NO, KiConfig::getInstance()->getKiType4Index());
@@ -211,6 +223,7 @@ QVector<int> AdjustKiMethod::setKiXQuaterStatusOfThemToNo(int kiType, const QVec
             }
         }
     }
+
     return randomList;
 }
 void AdjustKiMethod::generateMonthlyKi(int month)

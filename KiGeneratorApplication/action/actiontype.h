@@ -29,5 +29,6 @@ enum class ActionType
     AccessAdjustMode,
     UpdateQuarter,
     AccessCreateMode,
+    Config,
 };
 #endif // ACTIONTYPE_H
